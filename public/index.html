@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./build/tailwind.css" />
+    <title>Digitize Shop</title>
+  </head>
+  <body class="bg-gray-100">
+    <!-- app bar -->
+    <div class="md:hidden px-4 my-6 flex items-center justify-between">
+      <div class="">LOGODIGI</div>
+      <div class="font-bold text-slate-800 text-lg">ساعت هوشمند</div>
+      <div class="bg-white p-1 rounded-md shadow-lg cursor-pointer">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6 stroke-slate-800"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+          />
+        </svg>
+      </div>
+    </div>
+    <!-- filter sort -->
+    <div class="md:hidden px-4 flex items-center justify-between gap-x-2 mb-8">
+      <div
+        class="bg-white flex items-center justify-evenly p-2 rounded-md w-full cursor-pointer shadow-md"
+      >
+        <span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5 stroke-orange-600"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3 4h13M3 8h9m-9 4h9m5-4v12m0 0l-4-4m4 4l4-4"
+            />
+          </svg>
+        </span>
+        <span class="text-sm text-slate-800">محبوب ترین</span>
+      </div>
+      <div
+        class="bg-white flex items-center justify-evenly p-2 rounded-md w-full cursor-pointer shadow-md"
+      >
+        <span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5 stroke-gray-400"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"
+            />
+          </svg>
+        </span>
+        <span class="text-sm text-slate-800">فیلتر : برند اپل</span>
+      </div>
+    </div>
+    <!-- product list -->
+    <div class="container mx-auto">
+      <div
+      x-data="{
+        products :[
+        {id:1 , title : 'ساعت هوشمند اپل' , price : '4,253,320 تومان'},
+        {id:2 , title : 'ساعت هوشمند سامسونگ' , price : '10,223,320 تومان'},
+        {id:3 , title : 'ساعت هوشمند سری 6' , price : '1,223,320 تومان'},
+        {id:4 , title : 'ساعت هوشمند شیائومی' , price : '4,223,320 تومان'},
+        {id:5 , title : 'ساعت هوشمند اپل' , price : '2,223,320 تومان'},
+        {id:6 , title : 'ساعت هوشمند سونی' , price : '3,213,320 تومان'},
+        ]
+      }"
+        class="grid grid-cols-2 md:mt-10 md:grid-cols-3 lg:grid-cols-4 gap-2 px-4 mx-auto grid-flow-row"
+      >
+      <!-- single product -->
+      <template x-for="product in products">
+        <div class="bg-white rounded-md shadow-md p-2 relative">
+            <!-- intrested -->
+            <div class="absolute top-1 right-1 bg-gray-300 p-2 rounded-full">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-4 w-4 fill-orange-400"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </div>
+            <!-- product image -->
+            <div class="bg-gray-100 rounded-md">
+              <img src="/assets/images/apple-watch-7.png" alt="watch" />
+            </div>
+            <!-- color section -->
+            <div class="flex items-center justify-between my-2">
+              <p class="text-gray-200 text-sm">اپل</p>
+              <div class="flex" x-data="{checkShow : ''}">
+                <div
+                  class="bg-orange-300 w-6 h-6 rounded-full shadow-md border-2 border-white flex items-center justify-center cursor-pointer -ml-1"
+                  @click="checkShow = 'orange'"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-4 w-4"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    x-show="checkShow==='orange'"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </div>
+                <div
+                  class="bg-blue-300 w-6 h-6 flex items-center justify-center rounded-full shadow-md border-2 border-white -ml-1 cursor-pointer"
+                  @click="checkShow = 'blue'"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-4 w-4"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    x-show="checkShow==='blue'"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </div>
+                <div
+                  class="bg-red-600 w-6 h-6 flex items-center justify-center rounded-full shadow-md border-2 border-white cursor-pointer"
+                  @click="checkShow = 'red'"
+                >
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-4 w-4"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                x-show="checkShow==='red'"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clip-rule="evenodd"
+                />
+              </svg></div>
+              </div>
+            </div>
+            <!-- description -->
+            <div>
+              <div class="md:flex-1">
+                <p class="text-black text-bold text-sm my-2" x-text="product.title"></p>
+              </div>
+              <div class="md:flex-1">
+                <p class="text-bold text-sm text-left text-red-600" x-text="product.price"></p>
+              </div>
+            </div>
+            <hr class="mt-2" />
+            <!-- add to cart -->
+            <div class="text-center mt-1 py-1 text-red-500 cursor-pointer">
+              <button>مشاهده و سفارش</button>
+            </div>
+          </div>
+      </template>
+        
+
+    </div>
+
+    <script
+      defer
+      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+  </body>
+</html>
